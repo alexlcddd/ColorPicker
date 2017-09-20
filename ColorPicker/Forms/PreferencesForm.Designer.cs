@@ -36,6 +36,10 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.ZoomLabel = new MetroFramework.Controls.MetroLabel();
             this.ZoomTrackBar = new MetroFramework.Controls.MetroTrackBar();
+            this.HotkeyLabel = new MetroFramework.Controls.MetroLabel();
+            this.ChangeHotkeyButton = new MetroFramework.Controls.MetroButton();
+            this.OpacityLabel = new MetroFramework.Controls.MetroLabel();
+            this.OpacityTrackBar = new MetroFramework.Controls.MetroTrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +55,7 @@
             "Default",
             "Light",
             "Dark"});
-            this.mcbTheme.Location = new System.Drawing.Point(22, 85);
+            this.mcbTheme.Location = new System.Drawing.Point(23, 85);
             this.mcbTheme.Name = "mcbTheme";
             this.mcbTheme.Size = new System.Drawing.Size(121, 29);
             this.mcbTheme.TabIndex = 0;
@@ -78,7 +82,7 @@
             "Purple",
             "Red",
             "Yellow"});
-            this.mcbColor.Location = new System.Drawing.Point(155, 85);
+            this.mcbColor.Location = new System.Drawing.Point(156, 85);
             this.mcbColor.Name = "mcbColor";
             this.mcbColor.Size = new System.Drawing.Size(121, 29);
             this.mcbColor.TabIndex = 1;
@@ -88,7 +92,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 60);
+            this.metroLabel1.Location = new System.Drawing.Point(23, 63);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(52, 19);
             this.metroLabel1.TabIndex = 2;
@@ -97,7 +101,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(155, 60);
+            this.metroLabel2.Location = new System.Drawing.Point(156, 60);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(45, 19);
             this.metroLabel2.TabIndex = 2;
@@ -106,7 +110,7 @@
             // ZoomLabel
             // 
             this.ZoomLabel.AutoSize = true;
-            this.ZoomLabel.Location = new System.Drawing.Point(23, 118);
+            this.ZoomLabel.Location = new System.Drawing.Point(23, 117);
             this.ZoomLabel.Name = "ZoomLabel";
             this.ZoomLabel.Size = new System.Drawing.Size(59, 19);
             this.ZoomLabel.TabIndex = 2;
@@ -115,7 +119,7 @@
             // ZoomTrackBar
             // 
             this.ZoomTrackBar.BackColor = System.Drawing.Color.Transparent;
-            this.ZoomTrackBar.Location = new System.Drawing.Point(22, 140);
+            this.ZoomTrackBar.Location = new System.Drawing.Point(23, 139);
             this.ZoomTrackBar.Maximum = 32;
             this.ZoomTrackBar.Minimum = 1;
             this.ZoomTrackBar.Name = "ZoomTrackBar";
@@ -125,17 +129,62 @@
             this.ZoomTrackBar.Value = 2;
             this.ZoomTrackBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ZoomTrackBar_Scroll);
             // 
+            // HotkeyLabel
+            // 
+            this.HotkeyLabel.AutoSize = true;
+            this.HotkeyLabel.Location = new System.Drawing.Point(23, 232);
+            this.HotkeyLabel.Name = "HotkeyLabel";
+            this.HotkeyLabel.Size = new System.Drawing.Size(97, 19);
+            this.HotkeyLabel.TabIndex = 4;
+            this.HotkeyLabel.Text = "Hotkey: Alt + X";
+            // 
+            // ChangeHotkeyButton
+            // 
+            this.ChangeHotkeyButton.Location = new System.Drawing.Point(23, 254);
+            this.ChangeHotkeyButton.Name = "ChangeHotkeyButton";
+            this.ChangeHotkeyButton.Size = new System.Drawing.Size(254, 23);
+            this.ChangeHotkeyButton.TabIndex = 5;
+            this.ChangeHotkeyButton.Text = "Change hotkey";
+            this.ChangeHotkeyButton.UseSelectable = true;
+            this.ChangeHotkeyButton.Click += new System.EventHandler(this.ChangeHotkeyButton_Click);
+            // 
+            // OpacityLabel
+            // 
+            this.OpacityLabel.AutoSize = true;
+            this.OpacityLabel.Location = new System.Drawing.Point(23, 165);
+            this.OpacityLabel.Name = "OpacityLabel";
+            this.OpacityLabel.Size = new System.Drawing.Size(93, 19);
+            this.OpacityLabel.TabIndex = 2;
+            this.OpacityLabel.Text = "Opacity: 100%";
+            // 
+            // OpacityTrackBar
+            // 
+            this.OpacityTrackBar.BackColor = System.Drawing.Color.Transparent;
+            this.OpacityTrackBar.Location = new System.Drawing.Point(23, 187);
+            this.OpacityTrackBar.Minimum = 10;
+            this.OpacityTrackBar.Name = "OpacityTrackBar";
+            this.OpacityTrackBar.Size = new System.Drawing.Size(254, 23);
+            this.OpacityTrackBar.TabIndex = 3;
+            this.OpacityTrackBar.Text = "OpacityTrackBar";
+            this.OpacityTrackBar.Value = 100;
+            this.OpacityTrackBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.OpacityTrackBar_Scroll);
+            // 
             // PreferencesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 300);
+            this.Controls.Add(this.ChangeHotkeyButton);
+            this.Controls.Add(this.HotkeyLabel);
+            this.Controls.Add(this.OpacityTrackBar);
             this.Controls.Add(this.ZoomTrackBar);
             this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.OpacityLabel);
             this.Controls.Add(this.ZoomLabel);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.mcbColor);
             this.Controls.Add(this.mcbTheme);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "PreferencesForm";
             this.Resizable = false;
@@ -158,5 +207,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel ZoomLabel;
         private MetroFramework.Controls.MetroTrackBar ZoomTrackBar;
+        private MetroFramework.Controls.MetroButton ChangeHotkeyButton;
+        private MetroFramework.Controls.MetroLabel HotkeyLabel;
+        private MetroFramework.Controls.MetroTrackBar OpacityTrackBar;
+        private MetroFramework.Controls.MetroLabel OpacityLabel;
     }
 }

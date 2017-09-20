@@ -14,16 +14,33 @@ namespace ColorPicker
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         #region InitVariables
-        const int HOTKEY_SAVECOLOR = 0;
-
         private Bitmap bmp;
         private Graphics gfx;
         private Color clr;
-        HotKey hotkey;
+
+        private static IntPtr _hWnd;
+        public static IntPtr hWnd
+        { get => _hWnd; set => _hWnd = value; }
+
+        private static HotKey _hotkey;
+        public static HotKey hotkey
+        { get => _hotkey; set => _hotkey = value; }
+
+        private static HotKey.KeyModifiers _fsModifiers;
+        public static HotKey.KeyModifiers fsModifiers
+        { get => _fsModifiers; set => _fsModifiers = value; }
+
+        private static Keys _vk;
+        public static Keys vk
+        { get => _vk; set => _vk = value; }
 
         private static int _zoom = 2;
         public static int zoom
         { get => _zoom; set => _zoom = value; }
+
+        private static double _opacity = 1;
+        public static double opacity
+        { get => _opacity; set => _opacity = value; }
 
         private static MetroFramework.Components.MetroStyleManager _styleManager;
         public static MetroFramework.Components.MetroStyleManager styleManager
@@ -33,10 +50,13 @@ namespace ColorPicker
         public Form1()
         {
             InitializeComponent();
+            hWnd = this.Handle;
 
             //Hotkeys init
+            fsModifiers = (HotKey.KeyModifiers)Properties.Settings.Default.KeyModifier;
+            vk = (Keys)Properties.Settings.Default.KeyCode;
             hotkey = new HotKey();
-            hotkey.CreateHotKey(this.Handle, HOTKEY_SAVECOLOR, HotKey.KeyModifiers.Alt, Keys.X);
+            hotkey.CreateHotKey(hWnd, 0, (int)_fsModifiers, (int)_vk);
 
             //Theme and style init
             this.StyleManager = metroStyleManager;
@@ -46,6 +66,9 @@ namespace ColorPicker
 
             //Zoom init
             zoom = Properties.Settings.Default.Zoom;
+
+            //Opacity init
+            opacity = Properties.Settings.Default.Opacity;
         }
 
         private void CaptureTimer_Tick(object sender, EventArgs e)
@@ -65,6 +88,9 @@ namespace ColorPicker
             ColorRgbLabel.Text = clr.R.ToString() + ", " + clr.G.ToString() + ", " + clr.B.ToString();
             ColorHexLabel.Text = "#" + clr.R.ToString("X2") + clr.G.ToString("X2") + clr.B.ToString("X2");
             CursorPositionLabel.Text = "[" + MousePosition.X.ToString() + ", " + MousePosition.Y.ToString() + "]";
+
+            //Opacity
+            this.Opacity = opacity;
         }
 
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,7 +114,7 @@ namespace ColorPicker
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            hotkey.DestroyHotKey(this.Handle, HOTKEY_SAVECOLOR);
+            hotkey.DestroyHotKey(hWnd, 0);
         }
     }
 }

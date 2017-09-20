@@ -25,7 +25,7 @@ namespace ColorPicker.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public double Version {
             get {
                 return ((double)(this["Version"]));
@@ -58,13 +58,49 @@ namespace ColorPicker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public int Zoom {
             get {
                 return ((int)(this["Zoom"]));
             }
             set {
                 this["Zoom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int KeyModifier {
+            get {
+                return ((int)(this["KeyModifier"]));
+            }
+            set {
+                this["KeyModifier"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("88")]
+        public int KeyCode {
+            get {
+                return ((int)(this["KeyCode"]));
+            }
+            set {
+                this["KeyCode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double Opacity {
+            get {
+                return ((double)(this["Opacity"]));
+            }
+            set {
+                this["Opacity"] = value;
             }
         }
     }

@@ -147,6 +147,7 @@
             this.DisplayHeader = false;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.Opacity = 0.2D;
             this.Padding = new System.Windows.Forms.Padding(20, 30, 20, 20);
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.None;
