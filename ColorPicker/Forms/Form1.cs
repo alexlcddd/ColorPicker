@@ -96,13 +96,13 @@ namespace ColorPicker
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PreferencesForm preferencesForm = new PreferencesForm();
-            preferencesForm.Show();
+            preferencesForm.ShowDialog();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutForm aboutForm = new AboutForm();
-            aboutForm.Show();
+            aboutForm.ShowDialog();
         }
 
         protected override void WndProc(ref Message m)
