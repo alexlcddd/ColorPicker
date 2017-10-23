@@ -41,6 +41,9 @@ namespace ColorPicker
                     + (((fsModifiers & (int)HotKey.KeyModifiers.Control) != 0) ? "Ctrl + " : "")
                     + (((fsModifiers & (int)HotKey.KeyModifiers.Shift) != 0) ? "Shift + " : "")
                     + (Keys)vk;
+
+            //CopyFormat mcb
+            mcbCopyFormat.SelectedIndex = Properties.Settings.Default.CopyFormat;
         }
 
         private void mcbTheme_SelectedIndexChanged(object sender, EventArgs e)
@@ -55,6 +58,11 @@ namespace ColorPicker
             metroStyleManager.Style = (MetroFramework.MetroColorStyle)(mcbColor.SelectedIndex);
             Form1.styleManager.Style = (MetroFramework.MetroColorStyle)(mcbColor.SelectedIndex);
             Properties.Settings.Default.ColorIndex = mcbColor.SelectedIndex;
+        }
+
+        private void mcbCopyFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.CopyFormat = mcbCopyFormat.SelectedIndex;
         }
 
         private void ZoomTrackBar_Scroll(object sender, ScrollEventArgs e)

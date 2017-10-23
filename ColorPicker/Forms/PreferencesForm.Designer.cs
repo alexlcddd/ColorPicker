@@ -40,6 +40,8 @@
             this.ChangeHotkeyButton = new MetroFramework.Controls.MetroButton();
             this.OpacityLabel = new MetroFramework.Controls.MetroLabel();
             this.OpacityTrackBar = new MetroFramework.Controls.MetroTrackBar();
+            this.mcbCopyFormat = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +105,7 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(156, 60);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(45, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(46, 19);
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "Color:";
             // 
@@ -132,7 +134,7 @@
             // HotkeyLabel
             // 
             this.HotkeyLabel.AutoSize = true;
-            this.HotkeyLabel.Location = new System.Drawing.Point(23, 232);
+            this.HotkeyLabel.Location = new System.Drawing.Point(23, 272);
             this.HotkeyLabel.Name = "HotkeyLabel";
             this.HotkeyLabel.Size = new System.Drawing.Size(97, 19);
             this.HotkeyLabel.TabIndex = 4;
@@ -140,7 +142,7 @@
             // 
             // ChangeHotkeyButton
             // 
-            this.ChangeHotkeyButton.Location = new System.Drawing.Point(23, 254);
+            this.ChangeHotkeyButton.Location = new System.Drawing.Point(23, 294);
             this.ChangeHotkeyButton.Name = "ChangeHotkeyButton";
             this.ChangeHotkeyButton.Size = new System.Drawing.Size(254, 23);
             this.ChangeHotkeyButton.TabIndex = 5;
@@ -153,7 +155,7 @@
             this.OpacityLabel.AutoSize = true;
             this.OpacityLabel.Location = new System.Drawing.Point(23, 165);
             this.OpacityLabel.Name = "OpacityLabel";
-            this.OpacityLabel.Size = new System.Drawing.Size(93, 19);
+            this.OpacityLabel.Size = new System.Drawing.Size(91, 19);
             this.OpacityLabel.TabIndex = 2;
             this.OpacityLabel.Text = "Opacity: 100%";
             // 
@@ -169,11 +171,37 @@
             this.OpacityTrackBar.Value = 100;
             this.OpacityTrackBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.OpacityTrackBar_Scroll);
             // 
+            // mcbCopyFormat
+            // 
+            this.mcbCopyFormat.FormattingEnabled = true;
+            this.mcbCopyFormat.ItemHeight = 23;
+            this.mcbCopyFormat.Items.AddRange(new object[] {
+            "HEX (FFFFFF)",
+            "#HEX (#FFFFFF)",
+            "r g b (255 255 255)",
+            "r, g, b (255, 255, 255)",
+            "CMYK (1.00, 1.00, 1.00, 1.00)"});
+            this.mcbCopyFormat.Location = new System.Drawing.Point(23, 235);
+            this.mcbCopyFormat.Name = "mcbCopyFormat";
+            this.mcbCopyFormat.Size = new System.Drawing.Size(254, 29);
+            this.mcbCopyFormat.TabIndex = 0;
+            this.mcbCopyFormat.UseSelectable = true;
+            this.mcbCopyFormat.SelectedIndexChanged += new System.EventHandler(this.mcbCopyFormat_SelectedIndexChanged);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(23, 213);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(87, 19);
+            this.metroLabel3.TabIndex = 2;
+            this.metroLabel3.Text = "Copy format:";
+            // 
             // PreferencesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.ClientSize = new System.Drawing.Size(300, 340);
             this.Controls.Add(this.ChangeHotkeyButton);
             this.Controls.Add(this.HotkeyLabel);
             this.Controls.Add(this.OpacityTrackBar);
@@ -181,7 +209,9 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.OpacityLabel);
             this.Controls.Add(this.ZoomLabel);
+            this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.mcbCopyFormat);
             this.Controls.Add(this.mcbColor);
             this.Controls.Add(this.mcbTheme);
             this.KeyPreview = true;
@@ -211,5 +241,7 @@
         private MetroFramework.Controls.MetroLabel HotkeyLabel;
         private MetroFramework.Controls.MetroTrackBar OpacityTrackBar;
         private MetroFramework.Controls.MetroLabel OpacityLabel;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroComboBox mcbCopyFormat;
     }
 }

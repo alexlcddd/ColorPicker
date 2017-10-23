@@ -18,6 +18,21 @@ namespace ColorPicker
         private Graphics gfx;
         private Color clr;
 
+        enum ColorFormatConst : int
+        {
+            HEX = 0,
+            HEX_Delim,
+            RGB,
+            RGB_Delim,
+            CMYK
+        }
+
+        //For drag window
+        bool isMoving = false;
+        Point cursorPoint;
+        Point objPoint;
+
+        #region PreferencesVariables
         private static IntPtr _hWnd;
         public static IntPtr hWnd
         { get => _hWnd; set => _hWnd = value; }
@@ -42,9 +57,14 @@ namespace ColorPicker
         public static double opacity
         { get => _opacity; set => _opacity = value; }
 
+        private static double _copyFormat = 1;
+        public static double copyFormat
+        { get => _copyFormat; set => _copyFormat = value; }
+
         private static MetroFramework.Components.MetroStyleManager _styleManager;
         public static MetroFramework.Components.MetroStyleManager styleManager
         { get => _styleManager; set => _styleManager = value; }
+        #endregion
         #endregion
 
         public Form1()
@@ -69,6 +89,9 @@ namespace ColorPicker
 
             //Opacity init
             opacity = Properties.Settings.Default.Opacity;
+
+            //CopyFormat init
+            copyFormat = Properties.Settings.Default.CopyFormat;
         }
 
         private void CaptureTimer_Tick(object sender, EventArgs e)
@@ -108,13 +131,64 @@ namespace ColorPicker
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x0312)
-                Clipboard.SetText(ColorHexLabel.Text);
+                CopyColorToClipboard();
             base.WndProc(ref m);
+        }
+
+        private void CopyColorToClipboard()
+        {
+            string colorText = "";
+
+            switch ((ColorFormatConst)Properties.Settings.Default.CopyFormat)
+            {
+                case ColorFormatConst.HEX:
+                    colorText = clr.R.ToString("X2") + clr.G.ToString("X2") + clr.B.ToString("X2");
+                    break;
+                case ColorFormatConst.HEX_Delim:
+                    colorText = "#" + clr.R.ToString("X2") + clr.G.ToString("X2") + clr.B.ToString("X2");
+                    break;
+                case ColorFormatConst.RGB:
+                    colorText = clr.R.ToString() + " " + clr.G.ToString() + " " + clr.B.ToString();
+                    break;
+                case ColorFormatConst.RGB_Delim:
+                    colorText = clr.R.ToString() + ", " + clr.G.ToString() + ", " + clr.B.ToString();
+                    break;
+                case ColorFormatConst.CMYK:
+                    double black = Math.Min(1.0 - clr.R / 255.0, Math.Min(1.0 - clr.G / 255.0, 1.0 - clr.B / 255.0));
+                    double cyan = (1.0 - (clr.R / 255.0) - black) / (1.0 - black);
+                    double magenta = (1.0 - (clr.G / 255.0) - black) / (1.0 - black);
+                    double yellow = (1.0 - (clr.B / 255.0) - black) / (1.0 - black);
+                    colorText = cyan.ToString("N2") + ", " + magenta.ToString("N2") + ", " + yellow.ToString("N2") + ", " + black.ToString("N2");
+                    break;
+            }
+
+            Clipboard.SetText(colorText);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             hotkey.DestroyHotKey(hWnd, 0);
         }
+
+        #region Basic Dragging Function
+        private void StartDragging(object sender, MouseEventArgs e)
+        {
+            isMoving = true;
+            cursorPoint = Cursor.Position;
+            objPoint = this.Location;
+        }
+        private void Drag(object sender, MouseEventArgs e)
+        {
+            if (isMoving)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(cursorPoint));
+                this.Location = Point.Add(objPoint, new Size(dif));
+            }
+        }
+        private void StopDragging(object sender, MouseEventArgs e)
+        {
+            isMoving = false;
+        }
+        #endregion
     }
 }

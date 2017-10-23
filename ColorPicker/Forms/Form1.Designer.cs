@@ -49,6 +49,7 @@
             this.CapturePanel.HorizontalScrollbarBarColor = true;
             this.CapturePanel.HorizontalScrollbarHighlightOnWheel = false;
             this.CapturePanel.HorizontalScrollbarSize = 10;
+            this.CapturePanel.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.CapturePanel.Location = new System.Drawing.Point(0, 5);
             this.CapturePanel.Name = "CapturePanel";
             this.CapturePanel.Size = new System.Drawing.Size(80, 80);
@@ -56,6 +57,9 @@
             this.CapturePanel.VerticalScrollbarBarColor = true;
             this.CapturePanel.VerticalScrollbarHighlightOnWheel = false;
             this.CapturePanel.VerticalScrollbarSize = 10;
+            this.CapturePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDragging);
+            this.CapturePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
+            this.CapturePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDragging);
             // 
             // ColorPanel
             // 
@@ -71,15 +75,21 @@
             this.ColorPanel.VerticalScrollbarBarColor = true;
             this.ColorPanel.VerticalScrollbarHighlightOnWheel = false;
             this.ColorPanel.VerticalScrollbarSize = 10;
+            this.ColorPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDragging);
+            this.ColorPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
+            this.ColorPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDragging);
             // 
             // CursorPositionLabel
             // 
             this.CursorPositionLabel.AutoSize = true;
             this.CursorPositionLabel.Location = new System.Drawing.Point(123, 7);
             this.CursorPositionLabel.Name = "CursorPositionLabel";
-            this.CursorPositionLabel.Size = new System.Drawing.Size(55, 19);
+            this.CursorPositionLabel.Size = new System.Drawing.Size(54, 19);
             this.CursorPositionLabel.TabIndex = 1;
             this.CursorPositionLabel.Text = "Position";
+            this.CursorPositionLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDragging);
+            this.CursorPositionLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
+            this.CursorPositionLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDragging);
             // 
             // ColorHexLabel
             // 
@@ -89,6 +99,9 @@
             this.ColorHexLabel.Size = new System.Drawing.Size(67, 19);
             this.ColorHexLabel.TabIndex = 1;
             this.ColorHexLabel.Text = "HeX color";
+            this.ColorHexLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDragging);
+            this.ColorHexLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
+            this.ColorHexLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDragging);
             // 
             // ColorRgbLabel
             // 
@@ -98,6 +111,9 @@
             this.ColorRgbLabel.Size = new System.Drawing.Size(68, 19);
             this.ColorRgbLabel.TabIndex = 1;
             this.ColorRgbLabel.Text = "RGB color";
+            this.ColorRgbLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDragging);
+            this.ColorRgbLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Drag);
+            this.ColorRgbLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDragging);
             // 
             // metroContextMenu
             // 
