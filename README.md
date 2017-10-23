@@ -1,6 +1,4 @@
-
-
-ColorPicker is an open source free desktop app.
+# ColorPicker is an open source free desktop app.
 
 This repo builds is supposed to use in desktop (only Windows).
 
@@ -8,7 +6,7 @@ This repo builds is supposed to use in desktop (only Windows).
 
 It's built using:
 
-- [Electron](https://github.com/dennismagno/metroframework-modern-ui) - Metro UI of Windows 8 to .NET Windows Forms applications.
+- [MetroModernUI](https://github.com/dennismagno/metroframework-modern-ui) - Metro UI of Windows 8 to .NET Windows Forms applications.
 
 <img src="https://user-images.githubusercontent.com/31954328/31900070-bb8b7930-b836-11e7-83ff-55f98c3f3233.gif" />
 
